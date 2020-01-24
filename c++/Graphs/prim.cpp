@@ -5,7 +5,7 @@ struct edge {
     long long w;
     
     bool operator < (const edge & b) const {
-        return w > b.w;     // orden invertido
+        return w < b.w;     
     }
 };
 
@@ -18,11 +18,9 @@ int N, M;                   //Cantidad de nodos y aristas
 void prim() {
     priority_queue<edge> pq;
     visited[0] = true;
-    for (const auto & n : g[0]) {
-        int v = n.v;
-        int w = n.w;
-        if (not visited[v]) 
-            pq.push({v, w});
+    for (const auto & v : g[0]) {
+        if (not visited[v.v]) 
+            pq.push(v);
     }
     
     while (not pq.empty()) {
@@ -32,11 +30,9 @@ void prim() {
         if (not visited[u]) {
             ans += e.w;
             visited[u] = true;
-            for (const auto & n : g[u]) {
-                int v = n.v;
-                int w = n.w;
-                if (not visited[v]) 
-                    pq.push({v, w});
+            for (const auto & v : g[u]) {
+                if (not visited[v.v]) 
+                    pq.push(v);
             }
         }
     }
