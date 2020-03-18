@@ -13,12 +13,6 @@ void dfs(int u) {
         if (not visited[v]) 
             dfs(v);
     }
-
-    // if is used adyacency matrix
-    /* for (int i = 0 i < N; i++) {
-        if (g[u][i] and not visited[i]) 
-            dfs(i);
-    }*/
 }
 
 void init() {

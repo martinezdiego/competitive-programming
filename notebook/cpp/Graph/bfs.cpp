@@ -22,15 +22,6 @@ void bfs(int u) {
                 q.push(v);
             }
         }
-
-        // if adyacency matrix is used
-        /* for (int i = 0; i < n; i++) {
-            int v = g[u][i];
-            if (v and dist[i] == -1) {
-                dist[i] = dist[u] + 1;
-                q.push(i);
-            }
-        } */
     }
 }
 
