@@ -1,11 +1,14 @@
+/*
 Dado un grafo halla la distancia mínima entre cualquier par de nodos. 
-g[i][j] guardará la distancia mínima entre el nodo i y el j.
+g[i][j] almacena la distancia mínima entre el nodo i y el j.
+Complejidad: O(N^3)
+*/
 
 #define INF (1LL << 62)
-
-const int MAX = 505;    //Cantidad maxima de nodos
-long long g[MAX][MAX];        //Matriz de adyacencia
-int N, M;               //Cantidad de nodos y aristas
+#define MAX 505
+    
+long long g[MAX][MAX];  
+int N, M;               
 
 void floydWarshall() {
     for (int k = 0; k < N; k++)

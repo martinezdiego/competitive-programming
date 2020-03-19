@@ -1,12 +1,15 @@
-
-Búsqueda en anchura sobre grafos. 
+/*
+Búsqueda en amplitud sobre grafos. 
 Recibe un nodo inicial u y visita todos los nodos alcanzables desde u.
-BFS tambien halla la distancia mas corta entre el nodo inicial u y los demas nodos si todas las aristas tienen peso 1.
+Como un recorrido por niveles sobre arboles.
+Halla la distancia mas corta entre el nodo inicial u y los demas nodos si todas las aristas tienen peso 1.
+Complejidad: O(N)
+*/
 
-const int MAX = 100005;     //Cantidad maxima de nodos
-vector<int> g[MAX];         //Lista de adyacencia
-long long dist[MAX];        //Almacena la distancia a cada nodo
-int N, M;                   //Cantidad de nodos y aristas
+#define MAX 100005
+vector<int> g[MAX];         
+long long dist[MAX];        
+int N, M;
 
 void bfs(int u) {
     queue<int> q;
@@ -28,6 +31,6 @@ void bfs(int u) {
 void init() {
     for(int i = 0; i <= N; i++) {
         g[i].clear();
-        visited[i] = false;
+        dist[i] = -1;
     }
 }

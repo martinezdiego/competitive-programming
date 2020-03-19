@@ -1,4 +1,6 @@
-Dado un grafo halla el costo total de su arbol cobertor mínimo.
+// Dado un grafo halla el costo total de su arbol cobertor mínimo.
+
+#define MAX 100005
 
 struct edge {
     int v;
@@ -9,11 +11,10 @@ struct edge {
     }
 };
 
-const int MAX = 100005;     //Cantidad maxima de nodos
-vector<edge> g[MAX];        //Lista de adyacencia
-bitset<MAX> visited;        //Marca los nodos ya visiteditados
-long long ans;              //Costo total del arbol cobertor minimo
-int N, M;                   //Cantidad de nodos y aristas
+vector<edge> g[MAX];        
+bool visited[MAX];        
+long long ans;              
+int N, M;
 
 void prim() {
     priority_queue<edge> pq;

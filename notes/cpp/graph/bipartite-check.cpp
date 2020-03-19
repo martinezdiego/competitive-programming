@@ -1,10 +1,14 @@
+/*
 Modificación del BFS para detectar si un grafo es bipartito.
+Complejidad: O(N)
+*/
 
-const int MAX = 100005;     //Cantidad maxima de nodos
-vector<int> g[MAX];         //Lista de adyacencia
-int color[MAX];             //Almacena el color de cada nodo
-bool bipartite;             //para verificar si el grafo es bipartito
-int N, M;                   //Cantidad de nodos y aristas
+#define MAX 100005     
+
+vector<int> g[MAX];         
+int color[MAX];             
+bool bipartite;             
+int N, M;                   
 
 void bfs(int u) {
     queue<int> q;

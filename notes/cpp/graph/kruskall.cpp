@@ -1,5 +1,10 @@
+/*
 Dado un grafo con pesos halla su árbol cobertor mínimo.
-IMPORTANTE: Debe agregarse Disjoint Set.
+Debe agregarse Disjoint Set.
+Complejidad: O(Nlog(N))
+*/
+
+#define MAX 100005
 
 struct edge {
     int u, v, w;
@@ -9,9 +14,8 @@ bool cmp(const edge & a, const edge & b) {
     return a.w < b.w;
 }
 
-const int MAX = 100005;         // Cantidad maxima de nodos
-vector<pair<int,int>> g[MAX];   // Lista de adyacencia
-vector<edge> edges;             // Lista de arcos
+vector<pair<int,int>> g[MAX];   
+vector<edge> edges;
 int N, M;
 
 void kruskall() {
