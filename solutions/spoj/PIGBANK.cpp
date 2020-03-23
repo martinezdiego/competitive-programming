@@ -8,7 +8,6 @@ using namespace std;
 
 int W[MAXN], P[MAXN];
 int dp[MAXW];
-bool ready[MAXW];
 int N;
 
 int solve(int w)
@@ -17,23 +16,14 @@ int solve(int w)
         return INF;
     if (w == 0)
         return 0;
-    if (ready[w])
-        return dp[w];
-    int best = INF;
+    int & ans = dp[w];
+    if (ans != -1)
+        return ans;
+    ans = INF;
     for (int c = 0; c < N; c++) {
-        best = min(best, solve(w - W[c]) + P[c]);
+        ans = min(ans, solve(w - W[c]) + P[c]);
     }
-    dp[w] = best;
-    ready[w] = true;
-    return dp[w];
-}
-
-void init(int w)
-{
-    for (int i = 0; i <= w; i++) {
-        dp[i] = INF;
-        ready[i] = false;
-    }
+    return ans;
 }
 
 int main()
@@ -48,7 +38,7 @@ int main()
         for (int i = 0; i < N; i++)
             cin >> P[i] >> W[i];
         int w = full - empty;
-        init(w);
+        memset(dp, -1, sizeof dp);
         int ans = solve(w);
         if (ans == INF)
             cout << "This is impossible." << '\n';
