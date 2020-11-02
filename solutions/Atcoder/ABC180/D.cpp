@@ -3,26 +3,33 @@
 
 using namespace std;
 
-long long Y, A, B;
-
-long long solve(long long X)
+long long solve()
 {
-    if (X == Y)
-        return 0;
-    if (X > Y)
-        return -1;
+    long long x,y,a,b;
+    cin >> x >> y >> a >> b;
+    long long ans = 1;
+    long long mx = 0;
+    for (long long i = 0; i <= 60; i++) {
+        if (i)
+            ans *= a;
+        
+        long long w = ans * x;
+        
+        if (w >= y)
+            break;
+        
+        if (w < ((ans/a)*x))
+            break;
+        
+        mx = max(mx, (i + (y-1-w)/b));
+    }
     
-    long long l = solve(X * A) + 1;
-    long long r = solve(X + B) + 1;
-    
-    return max(r, l); 
+    return mx;
 }
 
 int main()
 {
     ios_base::sync_with_stdio(0); cin.tie(0);
-    long long X;
-    cin >> X >> Y >> A >> B;
-    cout << solve(X);
+    cout << solve() << '\n';
     return 0;
 }
